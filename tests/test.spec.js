@@ -11,15 +11,15 @@ describe('model ', function(){
         }
     });
 
-    xit('must have a propertie `clients` as a object', function(){
+    it('must have a propertie `clients` as a object', function(){
         expect(model).to.have.property('clients').and.to.be.an('object');
     })
 
     describe('must have a reset method for resetting the model ', function(){
-        xit('must be a function', function(){
+        it('must be a function', function(){
             expect(model.reset).to.be.a('function');
         })
-        xit('must reset clients to {}', function(){
+        it('must reset clients to {}', function(){
             model.clients = {javier: 'https://github.com/JavierBalonga', comment: 'aca me podes heatear tranquilo ;)'}
             model.reset();
             expect(model.clients).to.be.deep.equal({});
@@ -27,19 +27,19 @@ describe('model ', function(){
     })
 
     describe('must have an addAppointment method to add appointments to that client', function(){
-        xit('must be a function', function(){
+        it('must be a function', function(){
             expect(model.addAppointment).to.be.a('function');
         })
-        xit('must add clients as a properties', function(){
+        it('must add clients as a properties', function(){
             model.addAppointment('javier', {date:'22/10/2020 16:00'});
             expect(model.clients).to.have.property('javier')
         })
-        xit('must add clients as an array', function(){
+        it('must add clients as an array', function(){
             model.addAppointment('javier', {date:'22/10/2020 16:00'});
             expect(model.clients).to.have.property('javier');
             expect(model.clients.javier instanceof Array).to.be.true;
         })
-        xit('must be adding multiple appointments in the order as they are added, and must be handling multiple clients', function(){
+        it('must be adding multiple appointments in the order as they are added, and must be handling multiple clients', function(){
             model.addAppointment('javier', {date:'22/10/2020 14:00'});
             expect(model.clients.javier[0]).to.have.property('date').to.be.equal('22/10/2020 14:00');
             model.addAppointment('javier', {date:'22/10/2020 16:00'});
@@ -49,7 +49,7 @@ describe('model ', function(){
             model.addAppointment('alejandro', {date:'22/10/2020 12:00'});
             expect(model.clients.alejandro[1]).to.have.property('date').to.be.equal('22/10/2020 12:00');
         })
-        xit('the appointments must have a initial status, and to be `pending`', function(){
+        it('the appointments must have a initial status, and to be `pending`', function(){
             model.addAppointment('javier', {date:'22/10/2020 14:00'});
             model.addAppointment('javier', {date:'22/10/2020 16:00'});
             model.addAppointment('alejandro', {date:'22/10/2020 11:00'});
